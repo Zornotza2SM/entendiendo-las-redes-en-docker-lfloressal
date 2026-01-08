@@ -56,23 +56,34 @@ Vamos a comprobar la teoría del DNS manual vs automático. **No uséis Docker C
 1. Lanzad dos contenedores interactivos en la red por defecto:
 * `docker run -dit --name alpine1 alpine sh`
 * `docker run -dit --name alpine2 alpine sh`
-
+![alt text](image.png)
 
 2. Entrad en `alpine1`: `docker attach alpine1`.
+![alt text](image-1.png)
+
 3. Intentad hacer `ping alpine2`. **Debe fallar**.
+![alt text](image-2.png)
+
 4. Salid sin apagar el contenedor (Ctrl+P, Ctrl+Q).
 5. Usad `docker inspect alpine2` para averiguar su `IPAddress`.
+![alt text](image-3.png)
+
 6. Volved a entrar en `alpine1` y haced ping a esa IP. **Debe funcionar**.
+![alt text](image-4.png)
 
 ### Ejercicio B: La comodidad de las redes Custom
 
 1. Cread una red nueva: `docker network create red-clase`.
+![alt text](image-5.png)
+
 2. Lanzad dos contenedores nuevos conectados a esa red:
 * `docker run -dit --name alpine3 --network red-clase alpine sh`
 * `docker run -dit --name alpine4 --network red-clase alpine sh`
-
+![alt text](image-6.png)
 
 3. Entrad en `alpine3`.
+![alt text](image-8.png)
+
 4. Haced `ping alpine4`. **¡Debe funcionar directamente usando el nombre!**
 
 > **Captura de pantalla:** Haced una captura donde se vea el ping exitoso por nombre en el Ejercicio B y guardadla en una carpeta `/evidencias`. Haced commit.
