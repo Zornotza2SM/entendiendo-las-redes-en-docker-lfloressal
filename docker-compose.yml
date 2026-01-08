@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  tienda-web:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    networks:
+      - red-publica
+
+  logica-negocio:
+    image: curlimages/curl
+    command: tail -f /dev/null
+    networks:
+      - red-publica
+      - red-privada
+
+  base-datos:
+    image: postgres:alpine
+    environment:
+      POSTGRES_PASSWORD: secret
+    networks:
+      - red-privada
+
+networks:
+  red-publica:
+    driver: bridge
+  red-privada:
+    driver: bridge

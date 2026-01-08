@@ -130,16 +130,25 @@ Configurad los servicios así:
 ### La Prueba de Fuego (Verificación)
 
 Una vez levantado (`docker compose up -d`), debéis demostrar que el aislamiento funciona:
+![alt text](image-7.png)
 
 1. Entrad en `tienda-web`: `docker compose exec tienda-web sh`.
+![alt text](image-9.png)
+
 * Intentad `ping logica-negocio` -> **Debe funcionar**.
+![alt text](image-10.png)
+
 * Intentad `ping base-datos` -> **DEBE FALLAR** (Name or service not known / Host unreachable). *Esto es bueno, significa que el frontend no puede tocar la DB.*
+![alt text](image-11.png)
 
+1. Entrad en `logica-negocio`: `docker compose exec logica-negocio sh`.
+![alt text](image-12.png)
 
-2. Entrad en `logica-negocio`: `docker compose exec logica-negocio sh`.
 * Intentad `ping base-datos` -> **Debe funcionar**.
-* Intentad `ping tienda-web` -> **Debe funcionar**.
+![alt text](image-13.png)
 
+* Intentad `ping tienda-web` -> **Debe funcionar**.
+![alt text](image-14.png)
 
 
 > **Entrega:** Subid el `docker-compose.yml` final. Si no conseguís que falle el ping entre la web y la base de datos, la tarea no está superada.
